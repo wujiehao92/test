@@ -79,7 +79,7 @@ class ZipKin {
             self::$span = self::$rootSpan;
         }
         $childSpan = self::$tracer->newChild(self::$span->getContext());
-        self::$childSpan = $childSpan;
+
         $childSpan->start();
         $tag = 'data';
         if(in_array($type,['mysql-select','mysql-execute'])){
@@ -87,7 +87,7 @@ class ZipKin {
         }
         $childSpan->tag($tag,$executeStr);
         $childSpan->setName($type);
-
+        self::$childSpan = $childSpan;
     }
 
     /**
