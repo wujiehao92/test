@@ -20,7 +20,7 @@ class Test{
         $childSpan = $zipKin->getChildSpan();
         $injector($childSpan->getContext(), $headers);
         $httpClient = new Client();
-        $request = new \GuzzleHttp\Psr7\Request('GET', 'zip.com', $headers);
+        $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com', $headers);
         $response = $httpClient->send($request);
         $childSpan->finish();
         $result = $response;
