@@ -1,0 +1,18 @@
+{
+    "name": "wujiehao92/test",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Wotu\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wujiehao",
+            "email": "jiehao@busionline.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    }
+}
