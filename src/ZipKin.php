@@ -5,6 +5,7 @@ namespace Wotu;
 
 use http\Exception\BadMessageException;
 use Zipkin\Endpoint;
+use Zipkin\Propagation\Map;
 use Zipkin\Samplers\BinarySampler;
 use Zipkin\TracingBuilder;
 
@@ -36,7 +37,13 @@ class ZipKin {
             $tracing = self::createTracing(self::$appName, $_SERVER["REMOTE_ADDR"],$httpReporterURL);
             self::$tracing = $tracing;
             self::$tracer = $tracing->getTracer();
-            self::$rootSpan = self::$tracer->newTrace();
+            $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+            $carrier = array_map(function ($header) {
+                return $header[0];
+            }, $request->headers->all());
+            $extractor = $tracing->getPropagation()->getExtractor(new Map());
+            $extractedContext = $extractor($carrier);
+            self::$rootSpan = self::$tracer->nextSpan($extractedContext);
             self::$instance = new self();
         }
 
@@ -131,4 +138,6 @@ class ZipKin {
         }
         return self::$childSpan;
     }
+
+
 }

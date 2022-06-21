@@ -34,11 +34,7 @@ class Test{
         $childSpan = $zipKin->getChildSpan();
         $injector($childSpan->getContext(), $headers);
         $httpClient = new Client();
-        $body = [
-            'test' => 22
-        ];
-
-        $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com/cities', $headers,json_encode($body));
+        $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com/cities', $headers);
         $response = $httpClient->send($request);
         $childSpan->finish();
         return json_decode($response->getBody()->getContents(),true);
@@ -55,14 +51,11 @@ class Test{
             'test' => 22
         ];
         $option['form_params'] = $body;
-//        $request = new \GuzzleHttp\Psr7\Request('POST', 'exam.com/registers/register', $headers);
-//        $response = $httpClient->send($request,$option);
-        $response = Http::post('exam.com/registers/register',$body,$headers);
-//        $response = $httpClient->send($request);
+        $request = new \GuzzleHttp\Psr7\Request('POST', 'exam.com/registers/register', $headers);
+        $response = $httpClient->send($request,$option);
+
         $childSpan->finish();
 
-        var_dump(json_decode($response,true));
-        return json_decode($response,true);
         return json_decode($response->getBody()->getContents(),true);
     }
 }
