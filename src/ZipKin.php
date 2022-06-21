@@ -36,13 +36,16 @@ class ZipKin {
             self::$appName = $appName ;
             $tracing = self::createTracing(self::$appName, $_SERVER["REMOTE_ADDR"],$httpReporterURL);
             self::$tracing = $tracing;
-            self::$tracer = $tracing->getTracer();
+
             $request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
             $carrier = array_map(function ($header) {
                 return $header[0];
             }, $request->headers->all());
             $extractor = $tracing->getPropagation()->getExtractor(new Map());
             $extractedContext = $extractor($carrier);
+
+            self::$tracer = $tracing->getTracer();
+//            $rootSpan = self::$tracer->newTrace();
             self::$rootSpan = self::$tracer->nextSpan($extractedContext);
             self::$instance = new self();
         }
