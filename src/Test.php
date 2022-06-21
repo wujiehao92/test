@@ -25,4 +25,18 @@ class Test{
         $childSpan->finish();
         return $response->getBody()->getContents();
     }
+
+    public static function getCity(){
+        $headers = [];
+        $zipKin = ZipKin::getInstance('http://tracing-analysis-dc-hz.aliyuncs.com/adapt_cn6b5ghmxw@2d20a8f3746a69e_cn6b5ghmxw@53df7ad2afe8301/api/v2/spans','zhipei');
+        $tracing = $zipKin->getTracing();
+        $injector = $tracing->getPropagation()->getInjector(new Map());
+        $childSpan = $zipKin->getChildSpan();
+        $injector($childSpan->getContext(), $headers);
+        $httpClient = new Client();
+        $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com/cities', $headers);
+        $response = $httpClient->send($request);
+        $childSpan->finish();
+        return $response->getBody()->getContents();
+    }
 }
