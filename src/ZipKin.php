@@ -31,7 +31,7 @@ class ZipKin {
     public static function getInstance($httpReporterURL = '',$appName = 'default'){
 
         if (self::$tracer === null ) {
-            if(empty($httpReporterURL)) throw new BadMessageException('链路错误');
+            if(empty($httpReporterURL)) throw new \Exception('链路错误');
             self::$appName = $appName ;
             $tracing = self::createTracing(self::$appName, $_SERVER["REMOTE_ADDR"],$httpReporterURL);
             self::$tracing = $tracing;

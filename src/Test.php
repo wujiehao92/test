@@ -14,7 +14,7 @@ class Test{
 
     public static function getUser($name){
         $headers = [];
-        $zipKin = ZipKin::getInstance();
+        $zipKin = ZipKin::getInstance('http://tracing-analysis-dc-hz.aliyuncs.com/adapt_cn6b5ghmxw@2d20a8f3746a69e_cn6b5ghmxw@53df7ad2afe8301/api/v2/spans','zhipei');
         $tracing = $zipKin->getTracing();
         $injector = $tracing->getPropagation()->getInjector(new Map());
         $childSpan = $zipKin->getChildSpan();
@@ -23,7 +23,6 @@ class Test{
         $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com', $headers);
         $response = $httpClient->send($request);
         $childSpan->finish();
-        $result = $response;
-        return $result;
+        return $response->getBody()->getContents();
     }
 }
