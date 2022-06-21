@@ -23,7 +23,7 @@ class Test{
         $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com', $headers);
         $response = $httpClient->send($request);
         $childSpan->finish();
-        return $response->getBody()->getContents();
+        return json_decode($response->getBody()->getContents(),true);
     }
 
     public static function getCity(){
@@ -41,8 +41,7 @@ class Test{
         $request = new \GuzzleHttp\Psr7\Request('GET', 'exam.com/cities', $headers,json_encode($body));
         $response = $httpClient->send($request);
         $childSpan->finish();
-        var_dump($response->getBody()->getContents());
-        return $response->getBody()->getContents();
+        return json_decode($response->getBody()->getContents(),true);
     }
     public static function register(){
         $headers = [];
@@ -51,17 +50,18 @@ class Test{
         $injector = $tracing->getPropagation()->getInjector(new Map());
         $childSpan = $zipKin->getChildSpan();
         $injector($childSpan->getContext(), $headers);
-//        $httpClient = new Client();
+        $httpClient = new Client();
         $body = [
             'test' => 22
         ];
-
-//        $request = new \GuzzleHttp\Psr7\Request('POST', 'exam.com/registers/register', $headers);
-//        $response = $httpClient->send($request);
-        $response = Http::post('exam.com/registers/register',$body,$headers);
+        $option['form_params'] = $body;
+        $request = new \GuzzleHttp\Psr7\Request('POST', 'exam.com/registers/register', $headers);
+        $response = $httpClient->send($request,$option);
+//        $response = Http::post('exam.com/registers/register',$body,$headers);
 //        $response = $httpClient->send($request);
         $childSpan->finish();
-        var_dump(json_decode($response,true));
-        return json_decode($response,true);
+
+//        var_dump(json_decode($response,true));
+        return json_decode($response->getBody()->getContents(),true);
     }
 }
