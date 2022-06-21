@@ -55,13 +55,14 @@ class Test{
             'test' => 22
         ];
         $option['form_params'] = $body;
-        $request = new \GuzzleHttp\Psr7\Request('POST', 'exam.com/registers/register', $headers);
-        $response = $httpClient->send($request,$option);
-//        $response = Http::post('exam.com/registers/register',$body,$headers);
+//        $request = new \GuzzleHttp\Psr7\Request('POST', 'exam.com/registers/register', $headers);
+//        $response = $httpClient->send($request,$option);
+        $response = Http::post('exam.com/registers/register',$body,$headers);
 //        $response = $httpClient->send($request);
         $childSpan->finish();
 
-//        var_dump(json_decode($response,true));
+        var_dump(json_decode($response,true));
+        return json_decode($response,true);
         return json_decode($response->getBody()->getContents(),true);
     }
 }
