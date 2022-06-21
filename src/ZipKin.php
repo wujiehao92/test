@@ -126,6 +126,9 @@ class ZipKin {
     }
 
     public function getChildSpan(){
+        if(empty(self::$childSpan)) {
+            self::$childSpan = self::$rootSpan;
+        }
         return self::$childSpan;
     }
 }
