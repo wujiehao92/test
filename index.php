@@ -3,6 +3,8 @@ require "vendor/autoload.php";
 
 //\Wotu\Test::getCity();
 
+var_dump((new \Wotu\auth\user\User())->getUserInfo());
+
 $sitePageParam = [
     'name' =>  'wjh'//站点名
 ];
@@ -47,4 +49,4 @@ $groupList = array(
     "type" => 0,
     'id' => 2,
 );
-var_dump((new \Wotu\auth\user\UserGroup())->groupList($groupList));
+//var_dump((new \Wotu\auth\user\UserGroup())->groupList($groupList));
