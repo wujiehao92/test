@@ -27,6 +27,7 @@ class Test{
     }
 
     public static function getCity(){
+
         return BaseService::sendRequest('GET', 'exam.com/cities');
     }
     public static function register(){
@@ -35,4 +36,7 @@ class Test{
         ];
         return BaseService::sendRequest('POST', 'exam.com/registers/register',$body);
     }
+
+
+
 }

@@ -2,12 +2,6 @@
 
 namespace Wotu;
 
-
-/**
- * HTTP组件
- * Author: wanyang <1278930@qq.com>
- * Date: 2019-09-18
- */
 class Http
 {
     /**
