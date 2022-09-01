@@ -3,8 +3,8 @@
 namespace Wotu;
 class Config{
     private $serviceDomain = [
-//        'auth' => 'http://localhost:36006',
-        'auth' => 'https://api.cloud.wozp.cn',
+        'auth' => 'http://localhost:36006',
+//        'auth' => 'https://api.cloud.wozp.cn',
         'finance' => 'http://localhost:36015',
         'admin' => 'http://localhost:36021',
         'id' => 'http://47.98.193.2:39001',

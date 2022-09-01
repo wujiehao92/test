@@ -3,7 +3,7 @@ require "vendor/autoload.php";
 
 //\Wotu\Test::getCity();
 
-var_dump((new \Wotu\auth\user\User())->getUserInfo());
+//var_dump((new \Wotu\auth\user\User())->getUserInfo());
 
 $sitePageParam = [
     'name' =>  'wjh'//站点名
@@ -50,3 +50,23 @@ $groupList = array(
     'id' => 2,
 );
 //var_dump((new \Wotu\auth\user\UserGroup())->groupList($groupList));
+
+//var_dump((new \Wotu\auth\organization\Organization())->getOrganizationInfo('ORG2208101FG86EPS'));
+
+$createOrganiza = array(
+    "area" => 330102,
+    "city" => 330100,
+    "industryId" => 3,//行业id
+    "name" => "12312312",
+    "province" => 330000,
+    "scale" => 2,//规模  category中获取  scale
+    "sid" => 1,
+    "certifyStatus" => false,
+    "certifyImage" => "12313",
+    "companyCode" => "123123",
+    "userCode" => "6",
+    "code" => "ORG22090110IELQM8"
+);
+//var_dump((new \Wotu\auth\organization\Organization())->create($createOrganiza));
+//var_dump((new \Wotu\auth\organization\Organization())->edit($createOrganiza));
+var_dump((new \Wotu\auth\organization\Organization())->deleteOrganization('ORG22090110IELQM8'));

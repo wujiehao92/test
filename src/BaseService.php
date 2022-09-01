@@ -61,14 +61,13 @@ class BaseService
         return $headers;
     }
 
-    public static function sendNormalRequest($method, $url, $data = [] ,$header=[]){
+    public static function sendNormalRequest($method, $url, $data = [] ,$needToken = false,$header=[]){
         $headers = self::getHeader();
-
-        if(empty($headers['AUTHORIZATION'])){
-            $header[] = 'Authorization:php-sdk';
-        }else{
+        if(!empty($headers['AUTHORIZATION']) && $needToken){
             $header[] = 'Authorization:'.$headers['AUTHORIZATION'];
-
+        }else{
+            $header[] = 'Authorization:php-sdk';
+            $header[] = 'userCode:php-sdk';
         }
         $header[] = "Content-Type:application/json";
 

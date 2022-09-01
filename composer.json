@@ -15,9 +15,8 @@
     ],
     "require": {
         "php": ">=7.4",
-        "openzipkin/zipkin": "^2.0",
+        "openzipkin/zipkin": "^3.0",
         "guzzlehttp/guzzle": "^7.2",
         "symfony/http-foundation": "^5.4"
-
     }
 }

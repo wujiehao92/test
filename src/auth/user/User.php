@@ -16,7 +16,7 @@ class User extends AuthBase {
      */
     public  function getUserInfo(){
         $url = $this->domainUrl . '/auth/user/v1/info';
-        return BaseService::sendNormalRequest('GET', $url ,[]);
+        return BaseService::sendNormalRequest('GET', $url ,[],true);
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends AuthBase {
      */
     public  function getMyOrganization(){
         $url = $this->domainUrl . '/auth/user/v1/organization_list';
-        return BaseService::sendNormalRequest('GET', $url ,[]);
+        return BaseService::sendNormalRequest('GET', $url ,[],true);
     }
 
     /**
@@ -53,7 +53,7 @@ class User extends AuthBase {
      */
     public  function getMyGroup(){
         $url = $this->domainUrl . '/auth/user/v1/group_list';
-        return BaseService::sendNormalRequest('GET', $url ,[]);
+        return BaseService::sendNormalRequest('GET', $url ,[],true);
     }
 
 
