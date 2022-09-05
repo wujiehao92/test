@@ -4,7 +4,9 @@ use Wotu\auth\AuthBase;
 use Wotu\BaseService;
 use Wotu\dto\organization\CreateDepartmentDto;
 use Wotu\dto\organization\CreateOrganizationDto;
+use Wotu\dto\organization\CreateStaffDto;
 use Wotu\dto\organization\DeleteOrganizationDto;
+use Wotu\dto\organization\DeleteStaffDto;
 use Wotu\dto\organization\EditDepartmentDto;
 use Wotu\dto\organization\EditOrganizationDto;
 
@@ -121,6 +123,32 @@ class Organization extends AuthBase{
         $params = array(
             'code' => $departmentCode
         );
+        return BaseService::sendNormalRequest('POST', $url ,$requestDto->getRequestParam($params));
+    }
+
+    /**
+     * @param $params
+     * @return mixed|string
+     * @throws \ErrorException
+     * 批量创建组织成员
+     * https://api.cloud.wozp.cn/doc.html#/%E7%94%A8%E6%88%B7%E6%9C%8D%E5%8A%A1/%E7%BB%84%E7%BB%87API/createStaffPHPUsingPOST
+     */
+    public function createStaff($params){
+        $url = $this->domainUrl . '/auth/organization/create_staff_php';
+        $requestDto = new CreateStaffDto();
+        return BaseService::sendNormalRequest('POST', $url ,$requestDto->getRequestParam($params));
+    }
+
+    /**
+     * @param $params
+     * @return mixed|string
+     * @throws \ErrorException
+     * 批量删除组织成员
+     * https://api.cloud.wozp.cn/doc.html#/%E7%94%A8%E6%88%B7%E6%9C%8D%E5%8A%A1/%E7%BB%84%E7%BB%87API/deleteStaffPHPUsingPOST
+     */
+    public function deleteStaff($params){
+        $url = $this->domainUrl . '/auth/organization/delete_staff_php';
+        $requestDto = new DeleteStaffDto();
         return BaseService::sendNormalRequest('POST', $url ,$requestDto->getRequestParam($params));
     }
 

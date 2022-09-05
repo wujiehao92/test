@@ -69,4 +69,52 @@ $createOrganiza = array(
 );
 //var_dump((new \Wotu\auth\organization\Organization())->create($createOrganiza));
 //var_dump((new \Wotu\auth\organization\Organization())->edit($createOrganiza));
-var_dump((new \Wotu\auth\organization\Organization())->deleteOrganization('ORG22090110IELQM8'));
+//var_dump((new \Wotu\auth\organization\Organization())->deleteOrganization('ORG22090110IELQM8'));
+
+$createStaff = array(
+    "idCard" => "330724199212311615",
+    "mobile" => "187671787",
+    "name" => "1231",
+    "organizationCode" => "ORG2207281OW431TS",//组织编码
+    "roleCode" => "",//角色编码
+    "departmentCode" => "", //部门编码
+    "sid" => 1,
+);
+//var_dump((new \Wotu\auth\organization\Organization())->createStaff(['staffList' => [$createStaff]]));
+ $deleteStaff = array(
+    "organizationCode" => "ORG2208161LDJWEIO",//组织编码
+    "staffList" => [
+        'USER22090212DFMGHS',
+        'USER22090212CR3O5C'
+    ],//删除的员工编码
+);
+//var_dump((new \Wotu\auth\organization\Organization())->deleteStaff($deleteStaff));
+
+
+$createRole = array(
+//        "code" => "",
+    "description" => "2312312",
+    "name" => "php-sdk",
+    "organizationCode" => "ORG2208161LDJWEIO",
+);
+//var_dump((new \Wotu\auth\organization\Role())->createRole($createRole));
+$editRole = array(
+        "code" => "ROL2209051DATYYGW",
+    "description" => "sdsdf",
+    "name" => "php-sdk2",
+    "organizationCode" => "ORG2208161LDJWEIO",
+);
+//var_dump((new \Wotu\auth\organization\Role())->editRole($editRole));
+
+
+//var_dump((new \Wotu\auth\organization\Role())->deleteRole("ROL2209051DATYYGW"));
+
+
+//var_dump((new \Wotu\auth\organization\Role())->roleList("ORG2208161LDJWEIO"));
+
+$rolePermission = array(
+    "sid" => 1,//站点id
+    "roleCode" => "",//角色编码   全权限列表该值不传 或空
+);
+var_dump((new \Wotu\auth\organization\Role())->rolePermissionList($rolePermission));
+

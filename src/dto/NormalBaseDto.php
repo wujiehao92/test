@@ -12,12 +12,11 @@ class NormalBaseDto{
     public  function formatParam($params,$requestDto,$needValid = false , $validFields = []){
         if($needValid && is_array($validFields) && count($validFields)){
             foreach ($requestDto as $key=>$value){
-                if(in_array($key,$validFields) && !isset($params[$key])){
+                if(in_array($key,$validFields) && empty($params[$key])){
                     throw new \ErrorException($key .'  不能为空');
                 }
                 if(isset($params[$key]) && gettype($params[$key]) == gettype($value) ){
                     $requestDto[$key] = $params[$key];
-
                 }
             }
         }else{
