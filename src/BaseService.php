@@ -61,6 +61,11 @@ class BaseService
         return $headers;
     }
 
+    public static function sendDirectRequest($method, $url, $data = [] ,$needToken = false,$header=[]){
+        return Http::get($url,$data,$header);
+    }
+
+
     public static function sendNormalRequest($method, $url, $data = [] ,$needToken = false,$header=[]){
         $headers = self::getHeader();
         if(!empty($headers['AUTHORIZATION']) && $needToken){
@@ -83,7 +88,7 @@ class BaseService
             throw new \ErrorException($errorMessage);
         }
 
-        return $resultData['data'] ?? 'success';
+        return $resultData['data'] ?? null;
     }
 
 

@@ -116,5 +116,48 @@ $rolePermission = array(
     "sid" => 1,//站点id
     "roleCode" => "",//角色编码   全权限列表该值不传 或空
 );
-var_dump((new \Wotu\auth\organization\Role())->rolePermissionList($rolePermission));
+//var_dump((new \Wotu\auth\organization\Role())->rolePermissionList($rolePermission));
 
+
+//var_dump((new \Wotu\id\id\Id())->nextId());
+
+//var_dump((new \Wotu\auth\commonData\Category())->list("contract_settle_type"));
+
+//var_dump((new \Wotu\admin\role\Role())->rolePermission("22090213YD71FK"));
+
+
+//var_dump((new \Wotu\auth\commonData\City())->list("330000"));
+
+$idCard = array(
+    "address" => "safsdfa",//详细地址
+    "birthday" => 1231231211131,//生日
+    "expiredTime" => null,//身份证过期时间
+    "idCard" => "533527199506110421",//身份证号
+    "name" => "余润",//姓名
+    "result" => "验证失败",//结果  默认  验证成功
+    "resultCode" => -1,// 0成功 -1失败
+    "sex" => 0,//1男 2女
+    "type" => 1,//1系统验证 2人工验证
+);
+//var_dump((new \Wotu\auth\cms\IdCard())->addIdCard($idCard));
+//var_dump((new \Wotu\auth\cms\IdCard())->editIdCard($idCard));
+
+//var_dump((new \Wotu\auth\cms\IdCard())->delete($idCard));
+
+//var_dump((new \Wotu\auth\cms\IdCard())->queryInfo($idCard));
+
+$companyCredit = array(
+    "address" => "aaa",//详细地址
+    "companyCode" => "91500113060515743F",//统一信用代码
+    "legalName" => "重庆康安家俬有限公司",//法人姓名
+    "name" => "重庆康安家俬有限公司",//企业名称
+    "registerMoney" => "11w",//注册资金
+    "result" => "验证失败",//结果  success为验证通过
+);
+
+//var_dump((new \Wotu\auth\cms\CompanyCredit())->addCompanyCredit($companyCredit));
+//var_dump((new \Wotu\auth\cms\CompanyCredit())->editCompanyCredit($companyCredit));
+
+//var_dump((new \Wotu\auth\cms\CompanyCredit())->delete($companyCredit));
+
+//var_dump((new \Wotu\auth\cms\CompanyCredit())->queryInfo($companyCredit));
