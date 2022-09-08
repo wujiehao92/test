@@ -82,13 +82,18 @@ class BaseService
             $result = Http::send($url,$method,[],json_encode($data),$header);
         }
         $resultData = json_decode($result,true);
-//        var_dump($resultData);
-        if(empty($resultData['messageCode']) || $resultData['messageCode'] != 200){
+//        var_dump($result);
+        if(empty($resultData['messageCode']) ){
+            $errorMessage = $resultData['message'] ?? '请求失败';
+            throw new \ErrorException($errorMessage);
+        }elseif ($resultData['messageCode'] == 9997){
+            return [];
+        }elseif ($resultData['messageCode'] != 200){
             $errorMessage = $resultData['message'] ?? '请求失败';
             throw new \ErrorException($errorMessage);
         }
 
-        return $resultData['data'] ?? null;
+        return $resultData['data'] ?? 'success';
     }
 
 
