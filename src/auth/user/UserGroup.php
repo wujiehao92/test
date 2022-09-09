@@ -67,7 +67,7 @@ class UserGroup extends AuthBase {
      * @param $params
      * @return mixed|string
      * @throws \ErrorException
-     * 添加用户的 用户组
+     * 删除用户的 用户组
      * https://api.cloud.wozp.cn/doc.html#/%E7%94%A8%E6%88%B7%E6%9C%8D%E5%8A%A1/%E7%94%A8%E6%88%B7%E7%BB%84API/addUserGroupUsingPOST_1
      */
     public function deleteUserGroup($params){

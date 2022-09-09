@@ -12,7 +12,7 @@ class CreateUserDto extends NormalBaseDto
         "isCertify" => false,
         "mobile" => "",
         "name" => "",
-        "password" => "",
+        "source" => 0,
         "sid" => 0,
         "groupList" => []
     );
@@ -30,6 +30,9 @@ class CreateUserDto extends NormalBaseDto
         if(empty($params['sid'])){
             throw new \ErrorException('站点不能为空');
         }
-        return $this->formatParam($params,$this->param ,true ,["idCard" ,"mobile","name","password"]);
+        if(empty($params['source'])){
+            throw new \ErrorException('来源不能为空');
+        }
+        return $this->formatParam($params,$this->param ,true ,["idCard" ,"mobile","name"]);
     }
 }

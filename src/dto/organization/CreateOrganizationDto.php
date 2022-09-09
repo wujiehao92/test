@@ -31,6 +31,6 @@ class CreateOrganizationDto extends NormalBaseDto
         if (empty($params['sid'])) {
             throw new \ErrorException('站点不能为空');
         }
-        return $this->formatParam($params, $this->param, true, ["area", "city", "industryId", "name", "province", "scale","userCode","certifyStatus"]);
+        return $this->formatParam($params, $this->param, true, ["area", "city", "industryId", "name", "province", "scale","userCode"]);
     }
 }
